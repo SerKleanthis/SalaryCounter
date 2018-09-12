@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "159904842207",
+    "firebase_url": "https://salarycounter-e4e85.firebaseio.com",
+    "project_id": "salarycounter-e4e85",
+    "storage_bucket": "salarycounter-e4e85.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:159904842207:android:df94beff6102f607",
+        "android_client_info": {
+          "package_name": "com.homework.kleanthis.salarycounter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "159904842207-cefhdmqoc7i6tfa0ev6j5eujdahquu63.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.homework.kleanthis.salarycounter",
+            "certificate_hash": "ef7110d6386681424c1d8090fd4e8a708c965caa"
+          }
+        },
+        {
+          "client_id": "159904842207-kdq951rcc67i0er3653qp0ucctdmftsj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCir3cUeLshdwLaI9hTijp5BETsbtbjxwA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "159904842207-kdq951rcc67i0er3653qp0ucctdmftsj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

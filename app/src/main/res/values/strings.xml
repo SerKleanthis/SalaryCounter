@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SalaryCounter</string>
+    <string name="day">Day</string>
+    <string name="starting_time">Starting time</string>
+    <string name="end_time">End time</string>
+    <string name="cash_per_hour">Cash per hour</string>
+    <string name="date">Date</string>
+</resources>
