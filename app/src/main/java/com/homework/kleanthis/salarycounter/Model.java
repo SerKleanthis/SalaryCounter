@@ -4,9 +4,9 @@ public class Model {
 
     private String day;
     private String date;
-    private String startingTime;
-    private String endTime;
-    private String cash;
+    private int startingTime;
+    private int endTime;
+    private double cash;
 
     public Model(){}
 
@@ -26,27 +26,27 @@ public class Model {
         this.date = date;
     }
 
-    public String getStartingTime() {
+    public int getStartingTime() {
         return startingTime;
     }
 
-    public void setStartingTime(String startingTime) {
+    public void setStartingTime(int startingTime) {
         this.startingTime = startingTime;
     }
 
-    public String getEndTime() {
+    public int getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(String endTime) {
+    public void setEndTime(int endTime) {
         this.endTime = endTime;
     }
 
-    public String getCash() {
+    public double getCash() {
         return cash;
     }
 
-    public void setCash(String cash) {
+    public void setCash(double cash) {
         this.cash = cash;
     }
 }
