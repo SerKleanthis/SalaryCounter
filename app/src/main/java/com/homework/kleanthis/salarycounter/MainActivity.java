@@ -2,27 +2,18 @@ package com.homework.kleanthis.salarycounter;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-
-import static android.widget.Toast.*;
-import static com.homework.kleanthis.salarycounter.R.layout.list_item;
 
 public class MainActivity extends AppCompatActivity {
     private static final String CHILD = "workDay";
@@ -32,10 +23,9 @@ public class MainActivity extends AppCompatActivity {
     private static final String END_TIME = "end-time";
     private static final String CASH = "cash-per-hour";
     private DatabaseReference firebase;
-    private EditText date, day, startingTime, endTime, cash;
-    final Model data = new Model();
     private RecyclerView recyclerView;
-    private RecyclerViewerAdapter myAdapter = new RecyclerViewerAdapter(data);
+    private RecyclerViewerAdapter myAdapter;
+    private RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,13 +33,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         firebase = FirebaseDatabase.getInstance().getReference();
-        date = findViewById(R.id.date);
-        day = findViewById(R.id.day);
-        startingTime = findViewById(R.id.startingTime);
-        endTime = findViewById(R.id.endTime);
-        cash = findViewById(R.id.cashPerHour);
-        recyclerView = findViewById(R.id.recyclerView);
 
+        recyclerView = findViewById(R.id.recyclerView);
 
         castAdapter();
     }
@@ -58,12 +43,12 @@ public class MainActivity extends AppCompatActivity {
 
         //Model model = new Model(day.getText().toString(), startingTime.getText(), endTime.getText(), cash.getText());
 
-        // write to database
+       /* // write to database
         firebase.child(date.getText().toString()).child(DAY).setValue(day.getText().toString());
         firebase.child(date.getText().toString()).child(STARTING_TIME).setValue(Integer.valueOf(startingTime.getText().toString()));
         firebase.child(date.getText().toString()).child(END_TIME).setValue(Integer.valueOf(endTime.getText().toString()));
         firebase.child(date.getText().toString()).child(CASH).setValue(Double.valueOf(cash.getText().toString()));
-
+*/
 
 
     }
@@ -76,22 +61,22 @@ public class MainActivity extends AppCompatActivity {
 
         // method 2
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+        final ArrayList<Model> list = new ArrayList<>();
+
+        layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+        myAdapter = new RecyclerViewerAdapter(list);
         recyclerView.setAdapter(myAdapter);
+
+/*        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+        recyclerView.setLayoutManager(layoutManager);*/
 
         firebase.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
-                data.setDate(dataSnapshot.child(DATE).getValue(String.class));
-                data.setDay(dataSnapshot.child(DAY).getValue(String.class));
-                data.setStartingTime(dataSnapshot.child(STARTING_TIME).getValue(Long.class));
-                data.setEndTime(dataSnapshot.child(END_TIME).getValue(Long.class));
-                data.setCash(dataSnapshot.child(CASH).getValue(Double.class));
-
-                cash.setText(data.getCash()+"");
+                list.add(fillUpModel(dataSnapshot));
 
                 myAdapter.notifyDataSetChanged();
             }
@@ -103,7 +88,11 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
+                list.clear();
 
+                list.add(fillUpModel(dataSnapshot));
+
+                myAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -116,5 +105,18 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public Model fillUpModel(DataSnapshot dataSnapshot){
+
+        Model model = new Model();
+
+        model.setDate(dataSnapshot.child(DATE).getValue(String.class));
+        model.setDay(dataSnapshot.child(DAY).getValue(String.class));
+        model.setStartingTime(dataSnapshot.child(STARTING_TIME).getValue(String.class));
+        model.setEndTime(dataSnapshot.child(END_TIME).getValue(String.class));
+        model.setCash(dataSnapshot.child(CASH).getValue(String.class));
+
+        return model;
     }
 }

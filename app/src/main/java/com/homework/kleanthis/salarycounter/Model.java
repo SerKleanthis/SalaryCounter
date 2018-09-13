@@ -3,19 +3,12 @@ package com.homework.kleanthis.salarycounter;
 public class Model {
 
     private String day;
-    private int startingTime;
-    private int endTime;
-    private double cash;
+    private String date;
+    private String startingTime;
+    private String endTime;
+    private String cash;
 
-    public Model(){
-    }
-
-    public Model(String day, int startingTime, int endTime, double cash) {
-        this.day = day;
-        this.startingTime = startingTime;
-        this.endTime = endTime;
-        this.cash = cash;
-    }
+    public Model(){}
 
     public String getDay() {
         return day;
@@ -25,27 +18,35 @@ public class Model {
         this.day = day;
     }
 
-    public int getStartingTime() {
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getStartingTime() {
         return startingTime;
     }
 
-    public void setStartingTime(int startingTime) {
+    public void setStartingTime(String startingTime) {
         this.startingTime = startingTime;
     }
 
-    public int getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(int endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 
-    public double getCash() {
+    public String getCash() {
         return cash;
     }
 
-    public void setCash(double cash) {
+    public void setCash(String cash) {
         this.cash = cash;
     }
 }

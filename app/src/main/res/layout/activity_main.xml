@@ -6,58 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/date"/>
-
-    <EditText
-        android:id="@+id/day"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/day"
-        app:layout_constraintTop_toBottomOf="@+id/date" />
-
-    <EditText
-        android:id="@+id/startingTime"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/starting_time"
-        app:layout_constraintTop_toBottomOf="@+id/day" />
-
-    <EditText
-        android:id="@+id/endTime"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/end_time"
-        app:layout_constraintTop_toBottomOf="@+id/startingTime" />
-    <EditText
-        android:id="@+id/cashPerHour"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/cash_per_hour"
-        app:layout_constraintTop_toBottomOf="@+id/endTime" />
-
-  <!--  <ListView
-        android:id="@+id/list_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/addButton"
-        app:layout_constraintTop_toBottomOf="@+id/cashPerHour"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="0dp"
-        tools:ignore="MissingConstraints">
-
-    </ListView>-->
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/addButton"
-        app:layout_constraintTop_toBottomOf="@+id/cashPerHour">
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
     </android.support.v7.widget.RecyclerView>
 
